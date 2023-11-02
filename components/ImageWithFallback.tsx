@@ -2,6 +2,8 @@ import React, { DetailedHTMLProps, ImgHTMLAttributes, useMemo, useState } from '
 import useSWR from 'swr'
 import { MediaType, mimeToMediaType } from 'models/mediaType'
 import { getMimeType, isDataURI } from 'utils/asset'
+import Image from 'next/image';
+
 
 interface Props
   extends DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
@@ -54,7 +56,7 @@ export function ImageWithFallback({
   }
 
   return (
-    <img
+    <Image
       src={!cleanSrc || imageError ? fallback : cleanSrc}
       alt={alt || ''}
       onError={() => setImageError(true)}
