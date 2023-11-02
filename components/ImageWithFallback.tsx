@@ -57,7 +57,7 @@ export function ImageWithFallback({
 
   return (
     <Image
-      src={!cleanSrc || imageError ? fallback : cleanSrc}
+      src={(cleanSrc && !imageError) ? cleanSrc : fallback}
       alt={alt || ''}
       onError={() => setImageError(true)}
       style={{
@@ -67,6 +67,6 @@ export function ImageWithFallback({
       }}
       {...props}
     />
-  )
+  )  
 }
 
